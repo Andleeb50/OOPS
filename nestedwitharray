@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, target;
+
+    // Input the array size
+    cout << "Enter the size of the array: ";
+    cin >> n;
+
+    // Input the array elements
+    int arr[n];
+    cout << "Enter the elements of the array: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    // Input the target sum
+    cout << "Enter the target sum: ";
+    cin >> target;
+
+    // Generate all subsets using a loop
+    int totalSubsets = 1 << n; // 2^n subsets
+    for (int i = 0; i < totalSubsets; i++) {
+        int sum = 0;
+
+        // Print the current subset
+        cout << "{ ";
+        for (int j = 0; j < n; j++) {
+            if (i & (1 << j)) { // Check if j-th element is in the subset
+                cout << arr[j] << " ";
+                sum += arr[j];
+            }
+        }
+        cout << "}";
+
+        // Check if the sum of this subset matches the target
+        if (sum == target) {
+            cout << " <-- Matches target!";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
