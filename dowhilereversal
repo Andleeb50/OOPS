@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    do {
+        cout << "Enter a number (0 to exit): ";
+        cin >> n;
+
+        if (n != 0) {
+            int reversed = 0, temp = n;
+            while (temp > 0) {
+                reversed = reversed * 10 + (temp % 10);
+                temp /= 10;
+            }
+            cout << "Reversed: " << reversed << endl;
+        }
+    } while (n != 0);
+
+    return 0;
+}
+
